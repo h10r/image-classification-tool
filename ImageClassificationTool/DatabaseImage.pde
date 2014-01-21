@@ -4,8 +4,6 @@
  *
  * "CREATE TABLE IF NOT EXISTS images ( Id INTEGER PRIMARY KEY, time TIME, filename STRING, colors STRING, tags STRING );"
  *
- *
- *
  */
 
 class DatabaseImage

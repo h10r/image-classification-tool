@@ -4,11 +4,7 @@ Image Classification Tool
 Description
 --------------
 
-Image Classification Tool is a tool to classify the content and colours of single images and folders with images. Image Classification Tool was written in Processing / Java. It allows users to save tags and colour classification information for each image in a SQLite database, that can be integrated with other programming languages, e.g. Python and scikit-learn.
-
-Tags
---------------
-Colors, Classification, Image Tagging, Data Sets, Pattern Recognition, Machine Learning, Processing, Graphical User Interfaces, ClickHandler, FileReader, TextArea, Buttons, SQLite.
+Image Classification Tool is a tool to classify the content and colours of single images and folders with images. Image Classification Tool was written in Processing / Java. It allows users to save tags and colour classification information for each image in a SQLite database (to integrate it with other programming languages, e.g. Python and scikit-learn).
 
 Screenshot
 --------------
@@ -21,6 +17,10 @@ Motivation
 I primarily wrote this program to tags on the content of images and classify the colors of the McGill Calibrated Colour Image Database. 
 
 http://tabby.vision.mcgill.ca/html/browsedownload.html
+
+Tags
+--------------
+Colors, Classification, Image Tagging, Data Sets, Pattern Recognition, Machine Learning, Processing, Graphical User Interfaces, ClickHandler, FileReader, TextArea, Buttons, SQLite.
 
 Fork this repository, if ...
 --------------
