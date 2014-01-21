@@ -114,13 +114,13 @@ void setupButtons() {
   b15.setClickHandler( new SetDataOnClickHandler("colors","black") );
   buttons.add( b15 );
 
-  Button bFolderSelect = new Button( "Select Folder" );
+  Button bFolderSelect = new Button( "Select Image(s)" );
   bFolderSelect.setPositionAndDimensions( MENU_LEFT_X, height - 70, MENU_LEFT_W, 30 );
   bFolderSelect.setBackgroundAndHighlightColors( color(46, 204, 113), colorButtonHighlight );
   bFolderSelect.setClickHandler( folderPickerClickHandler );
   buttons.add( bFolderSelect );
 
-  Button bSave = new Button( "Save Database" );
+  Button bSave = new Button( "Save all changes" );
   bSave.setPositionAndDimensions( MENU_LEFT_X, height - 35, MENU_LEFT_W, 30 );
   bSave.setBackgroundAndHighlightColors( color(231, 76, 60), color(236, 112, 99) );
   bSave.setClickHandler( saveRowInDatabaseClickHandler );

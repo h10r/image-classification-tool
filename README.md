@@ -14,7 +14,7 @@ Screenshot
 Motivation
 --------------
 
-I primarily wrote this program to tags on the content of images and classify the colors of the McGill Calibrated Colour Image Database. 
+I primarily wrote this program to tags and classify the colours of the McGill Calibrated Colour Image Database. 
 
 http://tabby.vision.mcgill.ca/html/browsedownload.html
 
