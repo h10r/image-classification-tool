@@ -36,7 +36,7 @@ License
 
 Image Classification Tool
 
-Copyright (C) 2014 Hendrik Heuer <hendrikheuer@gmail.com>
+2014 Hendrik Heuer <hendrikheuer@gmail.com>
 
 GNU General Public License 3
 
