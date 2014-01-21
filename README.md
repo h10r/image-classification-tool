@@ -14,18 +14,18 @@ Screenshot
 Motivation
 --------------
 
-I primarily wrote this program to tags and classify the colours of the McGill Calibrated Colour Image Database. 
+I primarily wrote this program to tag and classify the colours and content of the McGill Calibrated Colour Image Database. 
 
 http://tabby.vision.mcgill.ca/html/browsedownload.html
 
 Tags
 --------------
-Colors, Classification, Image Tagging, Data Sets, Pattern Recognition, Machine Learning, Processing, Graphical User Interfaces, ClickHandler, FileReader, TextArea, Buttons, SQLite.
+Colours, colors, Classification, Image Tagging, Data Sets, Pattern Recognition, Machine Learning, Processing, Graphical User Interfaces, ClickHandler, FileReader, TextArea, Buttons, SQLite.
 
 Fork this repository, if ...
 --------------
 
-- you want to classify the content and colors of images
+- you want to classify the content and colours of images
 - you want to integrate Processing and SQLite
 - you need basic GUI element like Buttons, Labels and TextInput for Processing
 - you need to read files (especially images) from the file system
