@@ -13,7 +13,7 @@ Colors, Classification, Image Tagging, Data Sets, Pattern Recognition, Machine L
 Screenshot
 --------------
 
-![Screenshot of Image Classification Tool](/data/screenshot.png "Screenshot of Image Classification Tool")
+![Screenshot of Image Classification Tool](ImageClassificationTool/data/screenshot.jpg "Screenshot of Image Classification Tool")
 
 Motivation
 --------------
