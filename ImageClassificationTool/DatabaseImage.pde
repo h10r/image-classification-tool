@@ -2,24 +2,23 @@
  *
  * Just use "sqlite3 tonks.db" on the command line to drop and create tables
  *
- * "CREATE TABLE IF NOT EXISTS images ( Id INTEGER PRIMARY KEY, time TIME, filename STRING, colors STRING, tags STRING );"
+ * "CREATE TABLE IF NOT EXISTS images ( Id INTEGER PRIMARY KEY, FullPath STRING, Colors STRING, Tags STRING );"
  *
  */
 
 class DatabaseImage
 {
   public Integer Id; 
-  public String time;
-  public String filename;
-  public String colors;
-  public String tags;
+  public String FullPath;
+  public String Colors;
+  public String Tags;
  
   private StringList ColorsList;
 
-  public DatabaseImage( String newFilename ) {
-    this.filename = newFilename;
-    this.colors = "";
-    this.tags = "";
+  public DatabaseImage( String newFullPath ) {
+    this.FullPath = newFullPath;
+    this.Colors = "";
+    this.Tags = "";
     
     this.ColorsList = new StringList();
   }
@@ -39,15 +38,15 @@ class DatabaseImage
   }
 
   void updateFormattedString() {
-    this.colors = "";
+    this.Colors = "";
     
     for ( int i = 0; i < this.ColorsList.size(); i++ ) {
-      this.colors = this.colors + this.ColorsList.get(i) + ",";
+      this.Colors = this.Colors + this.ColorsList.get(i) + ",";
     }
   }
   
   void setTags( String newTags ) {
-    this.tags = newTags;
+    this.Tags = newTags;
   }
 }
 

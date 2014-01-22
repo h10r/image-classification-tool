@@ -6,7 +6,7 @@ class Database {
   SQLite db;
 
   public Database( PApplet parent ) {
-    this.db = new SQLite( parent, "tonks.db" );
+    this.db = new SQLite( parent, "hendrik.db" );
   }
 
   void read() {
@@ -18,12 +18,16 @@ class Database {
     }
   }
 
-  DatabaseImage find( String filename ) {
-    String query = "SELECT * FROM images WHERE filename='" + filename + "'";
-    this.db.query( query );
-
+  DatabaseImage find( String findPath ) {
     DatabaseImage t = new DatabaseImage( "" );
-    this.db.setFromRow( t );
+
+    if ( this.db.connect() )
+    {      
+      String query = "SELECT * FROM images WHERE FullPath='" + findPath + "'";
+      this.db.query( query );
+
+      this.db.setFromRow( t );
+    }
 
     return t;
   }
@@ -36,8 +40,8 @@ class Database {
 
   void insert( DatabaseImage img ) {
     if ( this.db.connect() )
-    {
-      String query = "INSERT INTO images " + String.format( " VALUES( NULL, TIME('now'), '%s', '%s', '%s' );", img.filename, img.colors, img.tags );
+    {      
+      String query = "INSERT INTO images " + String.format( " VALUES( NULL, '%s', '%s', '%s' );", img.FullPath, img.Colors, img.Tags );
       this.db.query( query );
     }
   }
@@ -53,7 +57,7 @@ class Database {
       {
         t = new DatabaseImage( "" );
         this.db.setFromRow( t );
-        println( t );
+        println( t.FullPath );
       }
     }
   }

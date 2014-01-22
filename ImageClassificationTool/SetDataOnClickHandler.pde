@@ -19,7 +19,7 @@ class SetDataOnClickHandler extends ClickHandler {
     
     if ( this.Category == "colors" ) {
       currentImageInDatabase.addOrRemoveColor( this.Value );
-      println( currentImageInDatabase.colors );
+      println( currentImageInDatabase.Colors );
     }
   }  
 }
