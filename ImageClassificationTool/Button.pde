@@ -57,7 +57,7 @@ class Button {
   }
 
 
-  void display() {
+  void display() {    
     if ( this.IsOver ) {
       fill( this.ButtonBackgroundHighlight );
     } 

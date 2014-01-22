@@ -92,14 +92,15 @@ class ImageFolder {
     return false;
   }
 
-  void updateImage() {   
+  void updateImage() {
+    this.resetColorsAndTags();
+
     String fullPath = this.CurrentPath + this.CurrentFolder.get( this.CurrentImageIndex );
 
     lblFilename.setText( this.CurrentFolder.get( this.CurrentImageIndex ) );
 
     currentImageInDatabase = new DatabaseImage( fullPath );
 
-    println( fullPath );
     DatabaseImage imageFromDatabase = database.find( fullPath );
 
     if ( imageFromDatabase.FullPath == "" ) {
@@ -110,7 +111,7 @@ class ImageFolder {
       println( imageFromDatabase.Colors );
       println( imageFromDatabase.Tags );
     }
-    
+
     setColorButtonsFromDatabase( imageFromDatabase.Colors );
     setTagTextFieldFromDatabase( imageFromDatabase.Tags );
 
@@ -214,17 +215,45 @@ class ImageFolder {
     }
     return 0;
   }
-  
+
+  void resetColorsAndTags() {
+    textInput.clearInput();
+
+    Button b;
+    for (int i = buttons.size()-1; i >= 0; i--) {
+      b = buttons.get(i);
+      b.reset();
+      b.resetCheckbox();
+    }
+  }
+
   void setColorButtonsFromDatabase( String colorsFromDatabase ) {
     println("setColorButtonsFromDatabase");
     println( colorsFromDatabase );
+
+    String[] singleColors = split( colorsFromDatabase, "," );
+
+    Button b;
+
+    for (int j = singleColors.length-1; j >= 0; j--) {
+      for (int i = buttons.size()-1; i >= 0; i--) {
+        b = buttons.get(i);
+        
+        if ( singleColors[j].equals( b.Label.toLowerCase() ) == true) {
+          println( singleColors[j] + " --- " + b.Label.toLowerCase() );
+          println( b.IsChecked );
+          b.toggleChecked();
+          println( b.IsChecked );
+          
+        }
+      }
+    }
   }
-  
+
   void setTagTextFieldFromDatabase( String tagsFromDatabase ) {
     println( "setTagTextFieldFromDatabase" );
     println( tagsFromDatabase ); 
     textInput.setText( tagsFromDatabase );
   }
-  
 }
 
