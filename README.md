@@ -11,6 +11,17 @@ Screenshot
 
 ![Screenshot of Image Classification Tool](ImageClassificationTool/data/screenshot.jpg "Screenshot of Image Classification Tool")
 
+Dependencies
+--------------
+
+BezierSQLib
+
+http://bezier.de/processing/libs/sql/
+
+SQLite
+
+http://www.sqlite.org/download.html
+
 Motivation
 --------------
 
