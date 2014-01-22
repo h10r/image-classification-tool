@@ -100,7 +100,16 @@ class ImageFolder {
     currentImageInDatabase = new DatabaseImage( fullPath );
 
     println( fullPath );
-    println( database.find( fullPath ) );
+    DatabaseImage imageFromDatabase = database.find( fullPath );
+
+    if ( imageFromDatabase.FullPath == "" ) {
+      println( "*** Image not yet in database");
+    } 
+    else {
+      println( "*** " + imageFromDatabase.FullPath );
+      println( imageFromDatabase.Colors );
+      println( imageFromDatabase.Tags );
+    }
 
     this.CurrentImage = loadImage( fullPath );
 

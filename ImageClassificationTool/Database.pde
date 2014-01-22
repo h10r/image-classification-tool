@@ -26,7 +26,11 @@ class Database {
       String query = "SELECT * FROM images WHERE FullPath='" + findPath + "'";
       this.db.query( query );
 
-      this.db.setFromRow( t );
+      if (db.next())
+        {
+            //println( db.getString("FullPath") );
+            this.db.setFromRow( t );
+        }
     }
 
     return t;
