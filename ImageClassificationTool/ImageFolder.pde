@@ -103,13 +103,16 @@ class ImageFolder {
     DatabaseImage imageFromDatabase = database.find( fullPath );
 
     if ( imageFromDatabase.FullPath == "" ) {
-      println( "*** Image not yet in database");
+      // println( "*** Image not yet in database");
     } 
     else {
       println( "*** " + imageFromDatabase.FullPath );
       println( imageFromDatabase.Colors );
       println( imageFromDatabase.Tags );
     }
+    
+    setColorButtonsFromDatabase( imageFromDatabase.Colors );
+    setTagTextFieldFromDatabase( imageFromDatabase.Tags );
 
     this.CurrentImage = loadImage( fullPath );
 
@@ -211,5 +214,17 @@ class ImageFolder {
     }
     return 0;
   }
+  
+  void setColorButtonsFromDatabase( String colorsFromDatabase ) {
+    println("setColorButtonsFromDatabase");
+    println( colorsFromDatabase );
+  }
+  
+  void setTagTextFieldFromDatabase( String tagsFromDatabase ) {
+    println( "setTagTextFieldFromDatabase" );
+    println( tagsFromDatabase ); 
+    textInput.setText( tagsFromDatabase );
+  }
+  
 }
 

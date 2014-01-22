@@ -48,5 +48,9 @@ class DatabaseImage
   void setTags( String newTags ) {
     this.Tags = newTags;
   }
+  
+  void updateTags() {
+    this.Tags = textInput.inputText;
+  }
 }
 

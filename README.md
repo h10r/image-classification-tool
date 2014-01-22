@@ -22,6 +22,13 @@ SQLite
 
 http://www.sqlite.org/download.html
 
+Keyboard Shortcuts
+--------------
+
+Left arrow key - previous image in current folder
+Right arrow key - next image in current folder
+Space - Save to database
+
 How to change the database
 --------------
 

@@ -45,8 +45,11 @@ class Database {
   void insert( DatabaseImage img ) {
     if ( this.db.connect() )
     {      
+      
       String query = "INSERT INTO images " + String.format( " VALUES( NULL, '%s', '%s', '%s' );", img.FullPath, img.Colors, img.Tags );
       this.db.query( query );
+      
+      println( query );
     }
   }
 

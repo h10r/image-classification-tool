@@ -7,9 +7,8 @@ class SaveRowInDatabase extends ClickHandler {
   void run() {
     println( "SaveRowInDatabase" );
     
+    currentImageInDatabase.updateTags();
     database.insert( currentImageInDatabase );
-    
-    database.listAllImages();
   }  
 }
 

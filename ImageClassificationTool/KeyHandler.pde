@@ -6,13 +6,16 @@ class KeyHandler {
     if (keyCode == BACKSPACE || keyCode == DELETE) {
       textInput.backspace();
     }
-   if (keyCode == LEFT) {
+    if (keyCode == LEFT) {
       imageFolder.previousImage();
     }
-   if (keyCode == RIGHT) {
+    if (keyCode == RIGHT) {
       imageFolder.nextImage();
-    } 
-    else {
+    }
+    if (key == ' ') {
+      currentImageInDatabase.updateTags();
+      database.insert( currentImageInDatabase );
+    } else {
       textInput.addKey( key );
     }
   }
