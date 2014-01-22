@@ -22,6 +22,15 @@ SQLite
 
 http://www.sqlite.org/download.html
 
+How to change the database
+--------------
+
+On the command line, you can use "sqlite3 tonks.db" to directly manipulate the database. If you want to add your own tables, just use SQL like this:
+
+'''
+CREATE TABLE IF NOT EXISTS images ( Id INTEGER PRIMARY KEY, time TIME, filename STRING, colors STRING, tags STRING );
+'''
+
 Motivation
 --------------
 
