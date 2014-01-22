@@ -35,20 +35,26 @@ class Database {
    */
 
   void insert( DatabaseImage img ) {
-    String query = "INSERT INTO images " + String.format( " VALUES( NULL, TIME('now'), %s, %s, %s );", img.Filename, img.Colors, img.Tags );
-    this.db.query( query );
+    if ( this.db.connect() )
+    {
+      String query = "INSERT INTO images " + String.format( " VALUES( NULL, TIME('now'), '%s', '%s', '%s' );", img.filename, img.colors, img.tags );
+      this.db.query( query );
+    }
   }
 
   void listAllImages() {
-    this.db.query( "SELECT * FROM images" );
-
-    DatabaseImage t;
-    
-    while ( this.db.next () )
+    if ( this.db.connect() )
     {
-      t = new DatabaseImage( "" );
-      this.db.setFromRow( t );
-      println( t );
+      this.db.query( "SELECT * FROM images" );
+
+      DatabaseImage t;
+
+      while ( this.db.next () )
+      {
+        t = new DatabaseImage( "" );
+        this.db.setFromRow( t );
+        println( t );
+      }
     }
   }
 

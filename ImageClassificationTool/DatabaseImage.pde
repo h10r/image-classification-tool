@@ -8,16 +8,18 @@
 
 class DatabaseImage
 {
-  public String Filename;
-  public String Colors;
-  public StringList ColorsList;
+  public Integer Id; 
+  public String time;
+  public String filename;
+  public String colors;
+  public String tags;
  
-  public String Tags;
+  private StringList ColorsList;
 
   public DatabaseImage( String newFilename ) {
-    this.Filename = newFilename;
-    this.Colors = "";
-    this.Tags = "";
+    this.filename = newFilename;
+    this.colors = "";
+    this.tags = "";
     
     this.ColorsList = new StringList();
   }
@@ -37,15 +39,15 @@ class DatabaseImage
   }
 
   void updateFormattedString() {
-    this.Colors = "";
+    this.colors = "";
     
     for ( int i = 0; i < this.ColorsList.size(); i++ ) {
-      this.Colors = this.Colors + this.ColorsList.get(i) + ",";
+      this.colors = this.colors + this.ColorsList.get(i) + ",";
     }
   }
   
   void setTags( String newTags ) {
-    this.Tags = newTags;
+    this.tags = newTags;
   }
 }
 
