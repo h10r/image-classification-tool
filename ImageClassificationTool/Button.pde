@@ -53,7 +53,7 @@ class Button {
   }
 
   void toggleChecked() {
-    this.IsChecked = !this.IsChecked;
+    this.IsChecked = !this.IsChecked;    
   }
 
 

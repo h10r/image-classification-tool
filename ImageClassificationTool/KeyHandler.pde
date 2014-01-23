@@ -12,10 +12,21 @@ class KeyHandler {
     if (keyCode == RIGHT) {
       imageFolder.nextImage();
     }
+
+    /* debug buttons
+    if (key == 'h') {
+      for (int i = buttons.size()-1; i >= 0; i--) {
+        Button b = buttons.get(i);
+        println( b.IsChecked );
+      }
+    }
+    */
+
     if (key == ' ') {
       currentImageInDatabase.updateTags();
       database.insert( currentImageInDatabase );
-    } else {
+    } 
+    else {
       textInput.addKey( key );
     }
   }

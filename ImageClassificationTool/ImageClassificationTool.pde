@@ -29,7 +29,7 @@ DatabaseImage currentImageInDatabase = new DatabaseImage( "" );
 
 void setup() {
   size(1024, 600);
-
+  
   f = createFont("OpenSans-Bold", 12, true);
   textFont(f);
 
@@ -116,6 +116,7 @@ void mouseReleased() {
 void resetButtonStates() {
   for (int i = buttons.size()-1; i >= 0; i--) {
     Button b = buttons.get(i);
+    b.reset();
     b.resetCheckbox();
   }
 }
