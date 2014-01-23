@@ -230,6 +230,7 @@ class ImageFolder {
         b = buttons.get(i);
         if ( singleColors[j].equals( b.Label.toLowerCase() ) == true) {
           b.toggleChecked();
+          currentImageInDatabase.addOrRemoveColor( singleColors[j] );
         }
       }
     }

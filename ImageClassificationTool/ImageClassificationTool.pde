@@ -8,7 +8,7 @@
 *
 */
 
-final boolean DEBUG_MODE = true;
+final boolean DEBUG_MODE = false;
 
 PFont f;
 
