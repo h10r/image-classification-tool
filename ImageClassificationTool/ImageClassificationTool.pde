@@ -8,6 +8,8 @@
 *
 */
 
+final boolean DEBUG_MODE = true;
+
 PFont f;
 
 TextInput textInput;

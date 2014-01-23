@@ -9,15 +9,6 @@ class Database {
     this.db = new SQLite( parent, "hendrik.db" );
   }
 
-  void read() {
-    if ( this.db.connect() )
-    {
-      String[] tableNames = this.db.getTableNames();
-
-      println( tableNames[0] );
-    }
-  }
-
   DatabaseImage find( String findPath ) {
     DatabaseImage t = new DatabaseImage( "" );
 
@@ -73,8 +64,10 @@ class Database {
     {      
       String query = String.format( "UPDATE images SET Colors='%s', Tags='%s' WHERE FullPath='%s'", img.Colors, img.Tags, img.FullPath ); 
       this.db.query( query );
-
-      println( query );
+      
+      if (DEBUG_MODE) {
+        println( query );
+      } 
     }
   }
   
@@ -84,8 +77,10 @@ class Database {
 
       String query = "INSERT INTO images " + String.format( " VALUES( NULL, '%s', '%s', '%s' );", img.FullPath, img.Colors, img.Tags );
       this.db.query( query );
-
-      println( query );
+      
+      if (DEBUG_MODE) {
+        println( query );
+      }
     }
   }
 
@@ -100,7 +95,6 @@ class Database {
       {
         t = new DatabaseImage( "" );
         this.db.setFromRow( t );
-        println( t.FullPath );
       }
     }
   }
