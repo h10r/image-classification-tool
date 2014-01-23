@@ -13,14 +13,12 @@ class KeyHandler {
       imageFolder.nextImage();
     }
 
-    /* debug buttons
-    if (key == 'h') {
+    if ( DEBUG_MODE && key == 'h') {
       for (int i = buttons.size()-1; i >= 0; i--) {
         Button b = buttons.get(i);
         println( b.IsChecked );
       }
     }
-    */
 
     if (key == ' ') {
       currentImageInDatabase.updateTags();

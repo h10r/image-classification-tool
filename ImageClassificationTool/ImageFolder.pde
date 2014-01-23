@@ -104,16 +104,16 @@ class ImageFolder {
 
     DatabaseImage imageFromDatabase = database.find( fullPath );
 
-    /* DEBUG MESSAGES 
-    if ( imageFromDatabase.FullPath == "" ) {
-      // println( "*** Image not yet in database");
-    } 
-    else {
-      println( "*** " + imageFromDatabase.FullPath );
-      println( imageFromDatabase.Colors );
-      println( imageFromDatabase.Tags );
+    if ( DEBUG_MODE ) {
+      if ( imageFromDatabase.FullPath == "" ) {
+        // println( "*** Image not yet in database");
+      } 
+      else {
+        println( "*** " + imageFromDatabase.FullPath );
+        println( imageFromDatabase.Colors );
+        println( imageFromDatabase.Tags );
+      }
     }
-    */
 
     setColorButtonsFromDatabase( imageFromDatabase.Colors );
     setTagTextFieldFromDatabase( imageFromDatabase.Tags );

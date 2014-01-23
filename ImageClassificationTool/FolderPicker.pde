@@ -20,7 +20,6 @@ class FolderPicker extends ClickHandler {
   }
 
   void run() {
-    println( "run() folderPicker" );
     this.show();
   }  
 }

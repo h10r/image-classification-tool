@@ -19,7 +19,6 @@ class Database {
 
       if (db.next())
       {
-        //println( db.getString("FullPath") );
         this.db.setFromRow( t );
       }
     }
@@ -51,7 +50,9 @@ class Database {
 
       if (db.next())
       {
-        println( db.getString("FullPath") );
+        if (DEBUG_MODE) {
+          println( db.getString("FullPath") );
+        }
         doesEntryExist = true;
       }
     }
