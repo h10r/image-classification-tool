@@ -41,13 +41,14 @@ class ImageFolder {
   }
 
   void setImagePath( String imagePath ) {
-    
+
     if ( this.isDirectory( imagePath ) ) {
       this.CurrentPath = imagePath + "/";
       this.crawlFolder( this.CurrentPath );
-      
+
       this.CurrentImageIndex = 0;
-    } else {
+    } 
+    else {
       String[] splitByFileType = split( imagePath, "." );
 
       if ( !this.isOfAllowedFileType( splitByFileType[splitByFileType.length-1] ) ) {
@@ -79,38 +80,57 @@ class ImageFolder {
 
   boolean isDirectory( String path ) {
     String[] splitPath = splitTokens( path, "." );
-    
+
     if ( isOfAllowedFileType( splitPath[ splitPath.length - 1 ] ) ) {
       return false;
     }
-    
+
     if ( splitPath.length != 2) {
       return true;
     }
-        
+
     return false;
   }
 
-  void updateImage() {   
+  void updateImage() {
+    resetButtonStates();
+    this.resetColorsAndTags();
+
     String fullPath = this.CurrentPath + this.CurrentFolder.get( this.CurrentImageIndex );
-    
+
     lblFilename.setText( this.CurrentFolder.get( this.CurrentImageIndex ) );
-    
+
     currentImageInDatabase = new DatabaseImage( fullPath );
-    
+
+    DatabaseImage imageFromDatabase = database.find( fullPath );
+
+    if ( DEBUG_MODE ) {
+      if ( imageFromDatabase.FullPath == "" ) {
+        // println( "*** Image not yet in database");
+      } 
+      else {
+        println( "*** " + imageFromDatabase.FullPath );
+        println( imageFromDatabase.Colors );
+        println( imageFromDatabase.Tags );
+      }
+    }
+
+    setColorButtonsFromDatabase( imageFromDatabase.Colors );
+    setTagTextFieldFromDatabase( imageFromDatabase.Tags );
+
     this.CurrentImage = loadImage( fullPath );
-     
-     this.AspectRatio = float( this.CurrentImage.height ) / float( this.CurrentImage.width );
-     
-     this.W = this.W_MAX;
-     this.H = int( this.W * this.AspectRatio );
-     
-     if ( this.H > this.H_MAX ) {
-     this.W = int( this.H_MAX / this.AspectRatio );
-     this.H = this.H_MAX;
-     }    
-     
-     this.ImageIsSet = true;
+
+    this.AspectRatio = float( this.CurrentImage.height ) / float( this.CurrentImage.width );
+
+    this.W = this.W_MAX;
+    this.H = int( this.W * this.AspectRatio );
+
+    if ( this.H > this.H_MAX ) {
+      this.W = int( this.H_MAX / this.AspectRatio );
+      this.H = this.H_MAX;
+    }    
+
+    this.ImageIsSet = true;
   }
 
   void previousImage() {
@@ -118,16 +138,15 @@ class ImageFolder {
       println( "Set image folder!" );
       return;
     }
-    
+
     if ( this.CurrentImageIndex > 0 ) {
       this.CurrentImageIndex = this.CurrentImageIndex - 1;
-    } else {
+    } 
+    else {
       this.CurrentImageIndex = this.CurrentFolder.size()-1;
     }
 
     this.updateImage();
-    
-    resetButtonStates();
   }
 
   void nextImage() {
@@ -135,16 +154,15 @@ class ImageFolder {
       println( "Set image folder!" );
       return;
     }
-    
+
     if ( this.CurrentImageIndex < this.CurrentFolder.size()-1 ) {
       this.CurrentImageIndex = this.CurrentImageIndex + 1;
-    } else {
+    } 
+    else {
       this.CurrentImageIndex = 0;
     }
-    
+
     this.updateImage();
-    
-    resetButtonStates();
   }
 
   final String[] allowedFileTypes = { 
@@ -189,12 +207,37 @@ class ImageFolder {
 
   int findImageIndexFromFilename( String filename ) {
     for (int i = this.CurrentFolder.size()-1; i >= 0; i--) {
-      
+
       if ( filename.equals( this.CurrentFolder.get(i) ) ) {
         return i;
       }
     }
     return 0;
+  }
+
+  void resetColorsAndTags() {
+    textInput.clearInput();
+
+    resetButtonStates();
+  }
+
+  void setColorButtonsFromDatabase( String colorsFromDatabase ) {
+    String[] singleColors = split( colorsFromDatabase, "," );
+    Button b;
+
+    for (int j = singleColors.length-1; j >= 0; j--) {
+      for (int i = buttons.size()-1; i >= 0; i--) {
+        b = buttons.get(i);
+        if ( singleColors[j].equals( b.Label.toLowerCase() ) == true) {
+          b.toggleChecked();
+          currentImageInDatabase.addOrRemoveColor( singleColors[j] );
+        }
+      }
+    }
+  }
+
+  void setTagTextFieldFromDatabase( String tagsFromDatabase ) {
+    textInput.setText( tagsFromDatabase );
   }
 }
 

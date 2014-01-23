@@ -40,9 +40,15 @@ class TextInput {
     }
   }
 
+  void setText( String newText ) {
+    this.inputText = newText;
+  }
+
   void backspace() {
-    if ( this.inputText.length() > 0 ) {
-      // @TODO: At first backspace, it deletes two
+    if ( this.inputText.length() == 1 ) {
+      this.inputText = this.inputText.substring(0, this.inputText.length()-1);
+    } 
+    else if ( this.inputText.length() > 0 ) {
       this.inputText = this.inputText.substring(0, this.inputText.length()-2);
     }
   }

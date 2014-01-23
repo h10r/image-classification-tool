@@ -53,11 +53,11 @@ class Button {
   }
 
   void toggleChecked() {
-    this.IsChecked = !this.IsChecked;
+    this.IsChecked = !this.IsChecked;    
   }
 
 
-  void display() {
+  void display() {    
     if ( this.IsOver ) {
       fill( this.ButtonBackgroundHighlight );
     } 
