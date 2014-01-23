@@ -24,7 +24,7 @@ class KeyHandler {
 
     if (key == ' ') {
       currentImageInDatabase.updateTags();
-      database.insert( currentImageInDatabase );
+      database.insertOrUpdate( currentImageInDatabase );
     } 
     else {
       textInput.addKey( key );

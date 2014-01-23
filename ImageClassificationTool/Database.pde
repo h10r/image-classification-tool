@@ -27,10 +27,10 @@ class Database {
       this.db.query( query );
 
       if (db.next())
-        {
-            //println( db.getString("FullPath") );
-            this.db.setFromRow( t );
-        }
+      {
+        //println( db.getString("FullPath") );
+        this.db.setFromRow( t );
+      }
     }
 
     return t;
@@ -42,13 +42,49 @@ class Database {
    *
    */
 
+  void insertOrUpdate( DatabaseImage img ) {
+    if( this.entryExits( img.FullPath ) ) {
+      this.update( img );
+    } else {
+      this.insert( img );
+    }  
+  }
+  
+  boolean entryExits( String entryFullPath ) {
+    boolean doesEntryExist = false;
+    
+    if ( this.db.connect() )
+    {      
+      String query = "SELECT * FROM images WHERE FullPath='" + entryFullPath + "'";
+      this.db.query( query );
+
+      if (db.next())
+      {
+        println( db.getString("FullPath") );
+        doesEntryExist = true;
+      }
+    }
+    
+    return doesEntryExist;
+  }  
+  
+  void update( DatabaseImage img ) {
+    if ( this.db.connect() )
+    {      
+      String query = String.format( "UPDATE images SET Colors='%s', Tags='%s' WHERE FullPath='%s'", img.Colors, img.Tags, img.FullPath ); 
+      this.db.query( query );
+
+      println( query );
+    }
+  }
+  
   void insert( DatabaseImage img ) {
     if ( this.db.connect() )
     {      
-      
+
       String query = "INSERT INTO images " + String.format( " VALUES( NULL, '%s', '%s', '%s' );", img.FullPath, img.Colors, img.Tags );
       this.db.query( query );
-      
+
       println( query );
     }
   }
