@@ -4,6 +4,8 @@
  *
  * "CREATE TABLE IF NOT EXISTS images ( Id INTEGER PRIMARY KEY, FullPath STRING, Colors STRING, Tags STRING );"
  *
+ * Delete all entries in database
+ * "DELETE FROM images;"
  */
 
 class DatabaseImage
